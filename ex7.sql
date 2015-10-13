@@ -1,14 +1,13 @@
-/* make sure there's dead pets */
-SELECT name, age FROM pet WHERE dead = 1;
+SELECT pet.id, pet.name, pet.age, pet.dead
+    FROM pet, person_pet, person
+    WHERE
+    pet.id = person_pet.pet_id AND
+    person_pet.person_id = person.id AND
+    person.first_name = "Ruxandra";
 
-/* aww poor robot */
-DELETE FROM pet WHERE dead = 1;
-
-/* make sure the robot is gone */
-SELECT * FROM pet;
-
-/* let's resurrect the robot */
-INSERT INTO pet VALUES (1, "Gigantor", "Robot", 1, 0);
-
-/* the robot LIVES! */
-SELECT * FROM pet;
+SELECT pet.id, pet.name, pet.age, pet.dead
+    FROM pet, person_pet, person
+    WHERE
+    pet.id = person_pet.pet_id AND
+    person_pet.person_id = person.id AND
+    person.id = 2;
